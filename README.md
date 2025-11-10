@@ -1,1 +1,0 @@
-# Web-Chiang-Mai-Compass

@@ -1,3 +1,13 @@
+<?php
+require_once 'config.php';
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+$username = $_SESSION['username'];
+?>
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -8,7 +18,6 @@
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
         <header class="header">
             <div class="header-left">
                 <span class="logo">LOGO</span>
@@ -27,18 +36,16 @@
                         <path d="m21 21-4.35-4.35"></path>
                     </svg>
                 </button>
-                <button class="profile-btn">
+                <button class="profile-btn" onclick="window.location.href='profile.php'">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
                     </svg>
-                    สมัคร
+                    <?php echo htmlspecialchars($username); ?>
                 </button>
             </div>
         </header>
 
-        <!-- Main Content -->
         <main class="main-content">
-            <!-- Carousel -->
             <div class="carousel-section">
                 <div class="carousel">
                     <div class="carousel-item">
@@ -66,24 +73,22 @@
                 </div>
             </div>
 
-            <!-- Content Section -->
             <div class="content-wrapper">
-                <!-- Left Section (FOOD) -->
                 <div class="left-section">
-                    <button class="category-tag" onclick="window.location.href='fooddetail.html'">FOOD</button>
+                    <button class="category-tag" onclick="window.location.href='fooddetail.php'">FOOD</button>
                     <div class="card" onclick="goToDetail('food-1')">
                         <div class="card-img"><img src="355101441_10161504729094237_5318895870746153819_n.jpg" alt="รูปภาพร้าน" class="card-image-tag"></div>
                         <div class="card-content">
                             <h3>Riverfront Restaurant Chiang Mai</h3>
                             <p>ที่อยู่: 367 ถนน เจริญราษฎร์ ตำบลวัดเกต เมือง เชียงใหม่ 50000</p>
                             <p>โทรศัพท์: 092 641 6983</p>
-                            <p>เวลาทำการ: เปิดเวลา 17:00เวลาทำการอาจมีการเปลี่ยนแปลงใน วันรัฐธรรมนูญ</p>
+                            <p>เวลาทำการ: เปิดเวลา 17:00เวลาทำการอาจมีการเปลี่ยนแปลงใน วันรักธรรมนูญ</p>
                         </div>
                     </div>
                     <div class="card" onclick="goToDetail('food-2')">
                         <div class="card-img"><img src="images.jpg" alt="รูปภาพร้าน" class="card-image-tag"></div>
                         <div class="card-content">
-                            <h3>เขยเจียงใหม่</h3>
+                            <h3>เขยเชียงใหม่</h3>
                             <p>ที่อยู่: 14 ซอย สันติธรรม ตำบลช้างเผือก อำเภอเมืองเชียงใหม่ เชียงใหม่ 50300</p>
                             <p>โทรศัพท์: 093 138 5553</p>
                             <p>เวลาทำการ: เปิดอยู่ ⋅ ปิดเวลา 22:00</p>                        
@@ -91,9 +96,8 @@
                     </div>
                 </div>
 
-                <!-- Right Section (TRAVEL) -->
                 <div class="right-section">
-                    <button class="category-tag" onclick="window.location.href='travel.html'">TRAVEL</button>
+                    <button class="category-tag" onclick="window.location.href='travel.php'">TRAVEL</button>
                     <div class="card-dark" onclick="goToDetail('travel-1')">
                         <div class="card-img"><img src="483361588_1203476391343987_1958632709949115213_n.jpg" alt="รูปภาพสถานที่ท่องเที่ยว" class="card-image-tag"></div>
                         <div class="card-content">
@@ -114,9 +118,8 @@
             </div>
         </main>
 
-        <!-- Footer -->
         <footer class="footer">
-            <button class="footer-btn">Footer</button>
+            <button class="footer-btn" onclick="window.location.href='logout.php'">ออกจากระบบ</button>
         </footer>
     </div>
 
@@ -130,7 +133,6 @@
             const carousel = document.querySelector('.carousel');
             carousel.style.transform = `translateX(-${n * 100}%)`;
             
-            // Update indicators
             indicators.forEach((indicator, index) => {
                 if (index === n) {
                     indicator.classList.add('active');
@@ -155,20 +157,13 @@
             showSlide(currentSlide);
         }
 
-        // Auto slide every 5 seconds
         setInterval(() => {
             moveCarousel(1);
         }, 5000);
 
-        // Function to go to detail page - แก้เฉพาะส่วนนี้!
         function goToDetail(id) {
-            console.log('Go to detail:', id);
-            // บันทึก ID ลง localStorage
-            localStorage.setItem('selectedId', id);
-            // ไปหน้า detail
-            window.location.href = 'detail.html';
+            window.location.href = 'detail.php?id=' + id;
         }
-        
     </script>
 </body>
 </html>

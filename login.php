@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $update_stmt->bind_param("i", $user['id']);
                 $update_stmt->execute();
                 
-                header("Location: home.html");
+                header("Location: home.php");
                 exit();
             } else {
                 $error = 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง';

@@ -72,17 +72,21 @@
                 <div class="left-section">
                     <button class="category-tag" onclick="window.location.href='fooddetail.html'">FOOD</button>
                     <div class="card" onclick="goToDetail('food-1')">
-                        <div class="card-img"></div>
+                        <div class="card-img"><img src="480129326_496829706797553_6007538007973042832_n.jpg" alt="รูปภาพร้าน" class="card-image-tag"></div>
                         <div class="card-content">
-                            <h3>Title</h3>
-                            <p>Body text for whatever you'd like to say. Add main reason for whatever you like to say, Add main reason for whatever you like to say, Add main reason for whatever you like to say. </p>
+                            <h3>Riverfront Restaurant Chiang Mai</h3>
+                            <p>ที่อยู่: 367 ถนน เจริญราษฎร์ ตำบลวัดเกต เมือง เชียงใหม่ 50000</p>
+                            <p>โทรศัพท์: 092 641 6983</p>
+                            <p>เวลาทำการ: เปิดเวลา 17:00เวลาทำการอาจมีการเปลี่ยนแปลงใน วันรัฐธรรมนูญ</p>
                         </div>
                     </div>
                     <div class="card" onclick="goToDetail('food-2')">
                         <div class="card-img"></div>
                         <div class="card-content">
-                            <h3>Title</h3>
-                            <p>Body text for whatever you'd like to say. Add main reason for whatever you like to say, Add main reason for whatever you like to say, Add main reason for whatever you like to say. </p>
+                            <h3>เขยเจียงใหม่</h3>
+                            <p>ที่อยู่: 14 ซอย สันติธรรม ตำบลช้างเผือก อำเภอเมืองเชียงใหม่ เชียงใหม่ 50300</p>
+                            <p>โทรศัพท์: 093 138 5553</p>
+                            <p>เวลาทำการ: เปิดอยู่ ⋅ ปิดเวลา 22:00</p>                        
                         </div>
                     </div>
                 </div>
@@ -154,12 +158,15 @@
             moveCarousel(1);
         }, 5000);
 
-        // Function to go to detail page
+        // Function to go to detail page - แก้เฉพาะส่วนนี้!
         function goToDetail(id) {
-            // เปลี่ยน URL หรือเปิด detail page ตามที่ต้องการ
             console.log('Go to detail:', id);
-            // ตัวอย่าง: window.location.href = 'detail.html?id=' + id;
+            // บันทึก ID ลง localStorage
+            localStorage.setItem('selectedId', id);
+            // ไปหน้า detail
+            window.location.href = 'detail.html';
         }
+        
     </script>
 </body>
 </html>
